@@ -1,13 +1,30 @@
 package com.bridgelap.workshop3;
 
 public class DeckOfCards {
-    public static void main(String[] args) {
+        void initializeCards(){
+            System.out.println("initializing cards...");
+            int cardIndex=0;
+            for (int i = 0; i < Card.suitArray.length; i++) {
+                for (int j = 0; j < Card.rankArray.length; j++) {
+                    Card card=new Card(Card.suitArray[i],Card.rankArray[j]);
+                    Card.cardArray[cardIndex++]=card;
+                }
+            }
+            printCards(Card.cardArray);
+        }
+        void printCards(Card[] cards){
+            System.out.print("Cards{");
+            for (Card card : cards) {
+                System.out.print(card.getSuit() + "-" + card.getRank() + ", ");
+            }
+            System.out.println("}");
+        }
 
-
-        String[] SUITS = {"Clubs", "Diamonds", "Hearts", "Spades"};
-        String[] RANKS = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
-        String player[][] = new String[4][9];
-        int n = SUITS.length * RANKS.length;
-         String [] deck = new String[n];
+        public static void main(String[] args) {
+            DeckOfCards deckOfCards=new DeckOfCards();
+            deckOfCards.initializeCards();
+        }
     }
-}
+
+
+    
