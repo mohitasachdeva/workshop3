@@ -1,6 +1,6 @@
 package com.bridgelap.workshop3;
 import java.util.Scanner;
-
+import java.util.ArrayList;
 public class DeckOfCards {
     static Scanner scanner = new Scanner(System.in);
 
@@ -72,19 +72,31 @@ public class DeckOfCards {
         printCards(Card.cardArray);
     }
 
-            void swapCards ( int i, int j){
-                Card temp = Card.cardArray[i];
-                Card.cardArray[i] = Card.cardArray[j];
-                Card.cardArray[j] = temp;
+    void swapCards(int i, int j) {
+        Card temp = Card.cardArray[i];
+        Card.cardArray[i] = Card.cardArray[j];
+        Card.cardArray[j] = temp;
+    }
+
+    public void distributeCards(ArrayList<Player> playerList, Card[] cardArray) {
+        System.out.println("distributing cards...");
+        int cardIndex = 0;
+        for (Player player : playerList) {
+            for (int i = 0; i < 9; i++) {
+                player.playerCards[i] = cardArray[cardIndex++];
             }
-            public static void main (String[]args){
+        }
+    }
+        public static void main (String[]args){
             DeckOfCards deckOfCards = new DeckOfCards();
             deckOfCards.initializeCards();
             deckOfCards.addPlayers();
             deckOfCards.changePlayerOrder();
-
+            deckOfCards.shuffleCards();
+            deckOfCards.distributeCards(Player.playerList,Card.cardArray);
         }
     }
+
 
 
 
