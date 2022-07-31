@@ -21,8 +21,16 @@ public class Player {
                 break;
             }
         }
+
         return player1;
     }
+    public static void swapPlayer(int i, int j){
+        Player player=playerList.get(i);
+        playerList.set(i,playerList.get(j));
+        playerList.set(j,player);
+    }
+    
+
     public String getName() {
         return name;
     }
